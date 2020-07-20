@@ -1,16 +1,14 @@
 window.addEventListener('DOMContentLoaded', () => {
-   
-    const inputAvatar = document.querySelector('#input-avatar');
-    const formContainer = document.querySelector('#form-conatainer');
-    
-    formContainer.addEventListener('click', (e) => {
-        console.log('click!');
-        inputAvatar.click();
-    })
+  const inputAvatar = document.querySelector('#input-avatar');
+  const formContainer = document.querySelector('#form-container');
 
-    inputAvatar.addEventListener('change', () => {
-        formContainer.submit();
-    })
+  formContainer.addEventListener('click', () => {
+    inputAvatar.click();
+  })
+
+  inputAvatar.addEventListener('change', () => {
+    formContainer.submit();
+  })
 
 
 })
