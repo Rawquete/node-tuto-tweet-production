@@ -1,4 +1,6 @@
 const User = require('../database/models/user.model');
+const { v4: uuidv4 } = require('uuid');
+
 
 exports.createUser = async (user) => {
   try {
@@ -7,9 +9,10 @@ exports.createUser = async (user) => {
       username: user.username,
       local: {
         email: user.email,
-        password: hashedPassword
+        password: hashedPassword,
+        emailToken: uuidv4()
       }
-    })
+    });
     return newUser.save();
   } catch(e) {
     throw e;
@@ -43,3 +46,4 @@ exports.removeUserIdToCurrentUserFollowing = (currentUser, userId) => {
   currentUser.following = currentUser.following.filter( objId => objId.toString() !== userId );
   return currentUser.save();
 }
+
